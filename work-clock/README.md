@@ -23,7 +23,7 @@ Work Clock is a derivative of [thepunkoff/pomodoro](https://github.com/noctalia-
 ## Usage
 1. Enable plugin in settings
 2. Add bar widget `Work Clock`
-3. Widget appears on the bar, clicking it will toggle the panel.
+3. Widget appears on the bar. See [Bar widget actions](#bar-widget-actions) for the click bindings.
 
 ### Alarm Sound Configuration
 When [`enable_sounds`](https://docs.noctalia.dev/noctalia/services/audio/) is set to `true` in Noctalia config (or enabled in the GUI with `Services -> Audio -> Shell Sounds`), the notification after completed session will pop up with Noctalia's default sound. If you want to use the bundled alarm sound, set this in Noctalia config:
