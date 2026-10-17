@@ -92,6 +92,9 @@ noctalia msg panel-toggle thepunkoff/pomodoro:panel
 | `use-bundled-alarm-sound` | `bool` | `false` | Use the bundled alarm sound when work/break is over. |
 | `bypass-noctalia-sound-globals` | `bool` | `false` | Ignore Noctalia's global sound settings and play bundled sounds directly via `ffplay`. |
 
+## Bar widget display
+Once the timer has started, the widget shows the remaining time and a progress bar that drains over the phase. Work phases use the `primary` color, breaks use `tertiary`, and a paused timer is dimmed.
+
 ## Bar widget actions
 | Gesture | Action |
 |---------|--------|

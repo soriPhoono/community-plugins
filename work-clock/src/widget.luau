@@ -9,7 +9,12 @@ local function render(state)
         return
     end
 
-    local color = if state.isRunning then "primary" else "on_surface"
+    local isWork = state.sessionPtr.stage == 1
+    local phaseColor = if isWork then "primary" else "tertiary"
+    local color =
+        if not state.isDirty then "on_surface"
+        elseif state.isRunning then phaseColor
+        else phaseColor .. "/0.6"
     local name =
         if not state.isDirty then
             noctalia.getConfig("widget-glyph-main")
@@ -42,6 +47,19 @@ local function render(state)
             textAlign = "center",
             color = color
         }))
+
+        local sessionData = noctalia.state.get("pomodoro.sessionData")
+        local stageTotal = sessionData and sessionData[state.sessionPtr.session][state.sessionPtr.stage]
+        if stageTotal and stageTotal > 0 then
+            table.insert(content, ui.progress({
+                progress = state.secondsLeft / stageTotal,
+                fill = color,
+                track = "surface_variant/0.4",
+                radius = 2,
+                width = if isVertical then 24 else 36,
+                height = 4,
+            }))
+        end
     end
 
     local container = if isVertical then ui.column else ui.row
