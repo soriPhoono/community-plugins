@@ -10,9 +10,6 @@ A Pomodoro timer plugin for Noctalia for productivity. Initially ported from the
 - **Notifications**: Toast notification + alarm sound when work/break finishes.
 - **Ticking Sound**: Optional tick/tock sounds each second while a work session is running.
 
-## TODO
-- IPC
-
 ## Plugin
 
 | Field | Value |
@@ -100,7 +97,19 @@ noctalia msg panel-toggle thepunkoff/pomodoro:panel
 noctalia msg panel-toggle thepunkoff/pomodoro:panel
 ```
 
-More IPC commands to directly control the timer are coming soon.
+Control the timer through the service entry (`all` is required, the service is a singleton):
+```sh
+noctalia msg plugin thepunkoff/pomodoro:pomodoro all <event>
+```
+
+| Event | Effect |
+|-------|--------|
+| `toggle` | Start or pause the current phase. |
+| `start` | Start the current phase if it is not running. |
+| `pause` | Pause the current phase if it is running. |
+| `skip` | Skip to the next phase. |
+| `reset` | Reset the current phase to its full length. |
+| `reset-all` | Reset to session 1, work phase. |
 
 ## Requirements
 - (optional) `ffplay` for playing bundled sounds independently from Noctalia's global sound settings.

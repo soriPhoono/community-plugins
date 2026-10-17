@@ -58,7 +58,7 @@ end
 --- main
 secondsLeft = getStageTotalSeconds()
 
-noctalia.state.watch("pomodoro.nextCommand", function(command)
+local function applyCommand(command)
     if command == "toggle" then
         isDirty = true
         isRunning = not isRunning
@@ -89,7 +89,28 @@ noctalia.state.watch("pomodoro.nextCommand", function(command)
 
     local state = getStateSnapshot()
     noctalia.state.set("pomodoro.state", state)
-end)
+end
+
+noctalia.state.watch("pomodoro.nextCommand", applyCommand)
+
+--- noctalia msg plugin thepunkoff/pomodoro:pomodoro all <event>
+function onIpc(event, _payload)
+    if event == "toggle" or event == "skip" or event == "reset" then
+        applyCommand(event)
+    elseif event == "reset-all" then
+        applyCommand("resetAll")
+    elseif event == "start" then
+        if not isRunning then
+            applyCommand("toggle")
+        end
+    elseif event == "pause" then
+        if isRunning then
+            applyCommand("toggle")
+        end
+    else
+        noctalia.log("unknown IPC event: " .. tostring(event))
+    end
+end
 
 local state = getStateSnapshot()
 noctalia.state.set("pomodoro.state", state)
