@@ -78,6 +78,11 @@ default = false
 id = "widget"
 entry = "src/widget.luau"
 
+    [widget.actions]
+    left   = "plugin thepunkoff/pomodoro:pomodoro all toggle"
+    middle = "plugin thepunkoff/pomodoro:pomodoro all skip"
+    right  = "panel-toggle thepunkoff/pomodoro:panel"
+
     [[widget.setting]]
     key     = "widget-glyph-main"
     type    = "glyph"

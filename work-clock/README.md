@@ -92,6 +92,15 @@ noctalia msg panel-toggle thepunkoff/pomodoro:panel
 | `use-bundled-alarm-sound` | `bool` | `false` | Use the bundled alarm sound when work/break is over. |
 | `bypass-noctalia-sound-globals` | `bool` | `false` | Ignore Noctalia's global sound settings and play bundled sounds directly via `ffplay`. |
 
+## Bar widget actions
+| Gesture | Action |
+|---------|--------|
+| Left click | Start or pause the timer. |
+| Middle click | Skip to the next phase. |
+| Right click | Open the panel. |
+
+Rebind any of them per instance under `[widget.<name>.actions]` in your config.
+
 ## IPC
 ```sh
 noctalia msg panel-toggle thepunkoff/pomodoro:panel

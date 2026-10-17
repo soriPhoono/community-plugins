@@ -1,9 +1,5 @@
 local isVertical = barWidget.isVertical()
 
-function onClick()
-    noctalia.togglePanel("thepunkoff/pomodoro:panel")
-end
-
 local function render(state)
     if not state or not state.sessionPtr then
         barWidget.render(ui.glyph({
