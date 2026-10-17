@@ -1,6 +1,9 @@
-# Pomodoro Timer
+# Work Clock
 
-A Pomodoro timer plugin for Noctalia for productivity. Initially ported from the legacy v4 plugin [Pomodoro Timer](https://github.com/noctalia-dev/legacy-v4-plugins/tree/main/pomodoro).
+A Pomodoro work timer plugin for Noctalia, with IPC control, bar widget click actions and a progress bar.
+
+## Credits
+Work Clock is a derivative of [thepunkoff/pomodoro](https://github.com/noctalia-dev/community-plugins/tree/main/pomodoro), which was itself ported from the legacy v4 plugin [Pomodoro Timer](https://github.com/noctalia-dev/legacy-v4-plugins/tree/main/pomodoro). The original code is MIT licensed, see `LICENCE.txt` for the copyright notices.
 
 ## Features
 - **Sessions**: Configurable sessions based on the standard format (work - short break - long break). Durations can be configured in the settings.
@@ -14,19 +17,19 @@ A Pomodoro timer plugin for Noctalia for productivity. Initially ported from the
 
 | Field | Value |
 | --- | --- |
-| ID | `thepunkoff/pomodoro` |
+| ID | `soriphoono/work-clock` |
 | Entries | Bar widget: `widget`; panel: `panel`; service: `pomodoro` |
 
 ## Usage
 1. Enable plugin in settings
-2. Add bar widget `Pomodoro Timer`
+2. Add bar widget `Work Clock`
 3. Widget appears on the bar, clicking it will toggle the panel.
 
 ### Alarm Sound Configuration
 When [`enable_sounds`](https://docs.noctalia.dev/noctalia/services/audio/) is set to `true` in Noctalia config (or enabled in the GUI with `Services -> Audio -> Shell Sounds`), the notification after completed session will pop up with Noctalia's default sound. If you want to use the bundled alarm sound, set this in Noctalia config:
 
 ```toml
-[plugin_settings."thepunkoff/pomodoro"]
+[plugin_settings."soriphoono/work-clock"]
 use-bundled-alarm-sound = true
 ```
 
@@ -48,7 +51,7 @@ or use `Notifications -> Filtering` in the GUI.
 To play the sound even when `enable_sounds` (`Shell Sounds`) is set to false (e.g. if you don't want to enable all the sounds, just pomodoro's), use:
 
 ```toml
-[plugin_settings."thepunkoff/pomodoro"]
+[plugin_settings."soriphoono/work-clock"]
 bypass-noctalia-sound-globals = true
 ```
 
@@ -58,7 +61,7 @@ or `Bypass Noctalia Sound Globals` in the GUI plugin settings. This will use the
 To play a ticking (tick/tock) sound each second while a **work** session is running, enable it in Noctalia config:
 
 ```toml
-[plugin_settings."thepunkoff/pomodoro"]
+[plugin_settings."soriphoono/work-clock"]
 enable-work-timer-sound = true
 ```
 
@@ -67,7 +70,7 @@ or use `Enable Work Timer Sound` in the GUI plugin settings. Break timers stay s
 The ticking sound obeys the same global sound rules as the alarm: it plays through Noctalia's sound system when [`enable_sounds`](https://docs.noctalia.dev/noctalia/services/audio/) (`Shell Sounds`) is `true`. To play it even when `enable_sounds` is `false`, combine it with `bypass-noctalia-sound-globals` (which requires `ffplay`):
 
 ```toml
-[plugin_settings."thepunkoff/pomodoro"]
+[plugin_settings."soriphoono/work-clock"]
 enable-work-timer-sound = true
 use-bundled-alarm-sound = true
 bypass-noctalia-sound-globals = true
@@ -75,7 +78,7 @@ bypass-noctalia-sound-globals = true
 
 To open the panel with a command:
 ```sh
-noctalia msg panel-toggle thepunkoff/pomodoro:panel
+noctalia msg panel-toggle soriphoono/work-clock:panel
 ```
 
 ## Settings
@@ -106,12 +109,12 @@ Rebind any of them per instance under `[widget.<name>.actions]` in your config.
 
 ## IPC
 ```sh
-noctalia msg panel-toggle thepunkoff/pomodoro:panel
+noctalia msg panel-toggle soriphoono/work-clock:panel
 ```
 
 Control the timer through the service entry (`all` is required, the service is a singleton):
 ```sh
-noctalia msg plugin thepunkoff/pomodoro:pomodoro all <event>
+noctalia msg plugin soriphoono/work-clock:pomodoro all <event>
 ```
 
 | Event | Effect |

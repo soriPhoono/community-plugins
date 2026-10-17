@@ -1,11 +1,11 @@
-id           = "thepunkoff/pomodoro"
-name         = "Pomodoro Timer"
-version      = "1.3.0"
+id           = "soriphoono/work-clock"
+name         = "Work Clock"
+version      = "0.1.0"
 plugin_api   = 22
-author       = "thepunkoff"
+author       = "soriphoono"
 license = "MIT"
 icon = "brain"
-description = "Simple pomodoro timer."
+description = "Pomodoro work timer with IPC control, widget click actions and a progress bar."
 tags = ["bar", "panel", "service", "productivity", "time"]
 dependencies = ["ffplay"]
 
@@ -79,9 +79,9 @@ id = "widget"
 entry = "src/widget.luau"
 
     [widget.actions]
-    left   = "plugin thepunkoff/pomodoro:pomodoro all toggle"
-    middle = "plugin thepunkoff/pomodoro:pomodoro all skip"
-    right  = "panel-toggle thepunkoff/pomodoro:panel"
+    left   = "plugin soriphoono/work-clock:pomodoro all toggle"
+    middle = "plugin soriphoono/work-clock:pomodoro all skip"
+    right  = "panel-toggle soriphoono/work-clock:panel"
 
     [[widget.setting]]
     key     = "widget-glyph-main"

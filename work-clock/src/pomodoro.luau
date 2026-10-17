@@ -93,7 +93,7 @@ end
 
 noctalia.state.watch("pomodoro.nextCommand", applyCommand)
 
---- noctalia msg plugin thepunkoff/pomodoro:pomodoro all <event>
+--- noctalia msg plugin soriphoono/work-clock:pomodoro all <event>
 function onIpc(event, _payload)
     if event == "toggle" or event == "skip" or event == "reset" then
         applyCommand(event)
