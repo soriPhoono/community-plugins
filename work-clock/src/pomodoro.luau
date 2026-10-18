@@ -8,7 +8,6 @@ local config = (function()
         autoStartWork = noctalia.getConfig("auto-start-work") == true,
         useBundledAlarmSound = noctalia.getConfig("use-bundled-alarm-sound") == true,
         enableWorkTimerSound = noctalia.getConfig("enable-work-timer-sound") == true,
-        bypassNoctaliaSoundGlobals = noctalia.getConfig("bypass-noctalia-sound-globals") == true,
     }
 end)()
 noctalia.state.set("pomodoro.config", config)
@@ -22,7 +21,6 @@ noctalia.state.set("pomodoro.sessionData", sessionData)
 
 local sounds = require("./src/sounds.luau")
 sounds.init({
-    bypassNoctaliaSoundGlobals = config.bypassNoctaliaSoundGlobals,
     useBundledAlarmSound = config.useBundledAlarmSound,
     enableWorkTimerSound = config.enableWorkTimerSound,
 })

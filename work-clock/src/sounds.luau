@@ -10,15 +10,8 @@ local alarmSound: Sound = nil
 local tickSounds: { Sound } = {}
 local tockSounds: { Sound } = {}
 
-local bypassNoctaliaSoundGlobals = false
-
 local function playSound(sound: Sound)
-    if bypassNoctaliaSoundGlobals then
-        if noctalia.fileExists(sound.path) then
-            local shellQuotedSoundPath = "'" .. sound.path:gsub("'", "'\\''") .. "'"
-            noctalia.runAsync("ffplay -nodisp -autoexit -loglevel quiet " .. shellQuotedSoundPath)
-        end
-    elseif sound.loaded then
+    if sound.loaded then
         noctalia.sound.play(sound.name)
     end
 end
@@ -71,7 +64,6 @@ local function loadSounds(entries: { Sound }, batchSize: number)
 end
 
 function M.init(opts)
-    bypassNoctaliaSoundGlobals = opts.bypassNoctaliaSoundGlobals == true
     local useBundledAlarmSound = opts.useBundledAlarmSound == true
     local enableWorkTimerSound = opts.enableWorkTimerSound == true
 

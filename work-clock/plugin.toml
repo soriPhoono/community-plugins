@@ -7,7 +7,6 @@ license = "MIT"
 icon = "brain"
 description = "Pomodoro work timer with IPC control, widget click actions and a progress bar."
 tags = ["bar", "panel", "service", "productivity", "time"]
-dependencies = ["ffplay"]
 
 [[setting]]
 key     = "work-duration"
@@ -64,14 +63,6 @@ key     = "use-bundled-alarm-sound"
 type    = "bool"
 label_key = "settings.use-bundled-alarm-sound.label"
 description_key = "settings.use-bundled-alarm-sound.description"
-default = false
-
-[[setting]]
-key     = "bypass-noctalia-sound-globals"
-type    = "bool"
-label_key = "settings.bypass-noctalia-sound-globals.label"
-description_key = "settings.bypass-noctalia-sound-globals.description"
-visible_when = { key = "use-bundled-alarm-sound", values = ["true"] }
 default = false
 
 [[widget]]

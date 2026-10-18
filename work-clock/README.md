@@ -48,15 +48,6 @@ or use `Notifications -> Filtering` in the GUI.
 ```
 ```
 
-To play the sound even when `enable_sounds` (`Shell Sounds`) is set to false (e.g. if you don't want to enable all the sounds, just pomodoro's), use:
-
-```toml
-[plugin_settings."soriphoono/work-clock"]
-bypass-noctalia-sound-globals = true
-```
-
-or `Bypass Noctalia Sound Globals` in the GUI plugin settings. This will use the `ffplay` tool to play the sound directly, so make sure to have it installed.
-
 ### Ticking Sound Configuration
 To play a ticking (tick/tock) sound each second while a **work** session is running, enable it in Noctalia config:
 
@@ -67,14 +58,7 @@ enable-work-timer-sound = true
 
 or use `Enable Work Timer Sound` in the GUI plugin settings. Break timers stay silent.
 
-The ticking sound obeys the same global sound rules as the alarm: it plays through Noctalia's sound system when [`enable_sounds`](https://docs.noctalia.dev/noctalia/services/audio/) (`Shell Sounds`) is `true`. To play it even when `enable_sounds` is `false`, combine it with `bypass-noctalia-sound-globals` (which requires `ffplay`):
-
-```toml
-[plugin_settings."soriphoono/work-clock"]
-enable-work-timer-sound = true
-use-bundled-alarm-sound = true
-bypass-noctalia-sound-globals = true
-```
+The ticking sound obeys the same global sound rules as the alarm: it plays through Noctalia's sound system when [`enable_sounds`](https://docs.noctalia.dev/noctalia/services/audio/) (`Shell Sounds`) is `true`. When `enable_sounds` is `false`, neither the alarm nor the ticking plays.
 
 To open the panel with a command:
 ```sh
@@ -93,7 +77,6 @@ noctalia msg panel-toggle soriphoono/work-clock:panel
 | `auto-start-breaks` | `bool` | `false` | Automatically start the break timer after a work session. |
 | `enable-work-timer-sound` | `bool` | `false` | Play tick/tock sounds each second while a work session is running. Break timers stay silent. |
 | `use-bundled-alarm-sound` | `bool` | `false` | Use the bundled alarm sound when work/break is over. |
-| `bypass-noctalia-sound-globals` | `bool` | `false` | Ignore Noctalia's global sound settings and play bundled sounds directly via `ffplay`. |
 
 ## Bar widget display
 Once the timer has started, the widget shows the remaining time and a progress bar that drains over the phase. Work phases use the `primary` color, breaks use `tertiary`, and a paused timer is dimmed.
@@ -125,9 +108,6 @@ noctalia msg plugin soriphoono/work-clock:pomodoro all <event>
 | `skip` | Skip to the next phase. |
 | `reset` | Reset the current phase to its full length. |
 | `reset-all` | Reset to session 1, work phase. |
-
-## Requirements
-- (optional) `ffplay` for playing bundled sounds independently from Noctalia's global sound settings.
 
 ## Licensing
 
