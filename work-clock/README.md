@@ -84,9 +84,9 @@ Once the timer has started, the widget shows the remaining time and a progress b
 ## Bar widget actions
 | Gesture | Action |
 |---------|--------|
-| Left click | Start or pause the timer. |
+| Left click | Open the panel. |
 | Middle click | Skip to the next phase. |
-| Right click | Open the panel. |
+| Right click | Start or pause the timer. |
 
 Rebind any of them per instance under `[widget.<name>.actions]` in your config.
 

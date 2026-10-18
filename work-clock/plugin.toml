@@ -70,9 +70,9 @@ id = "widget"
 entry = "src/widget.luau"
 
     [widget.actions]
-    left   = "plugin soriphoono/work-clock:pomodoro all toggle"
+    left   = "panel-toggle soriphoono/work-clock:panel"
     middle = "plugin soriphoono/work-clock:pomodoro all skip"
-    right  = "panel-toggle soriphoono/work-clock:panel"
+    right  = "plugin soriphoono/work-clock:pomodoro all toggle"
 
     [[widget.setting]]
     key     = "widget-glyph-main"
