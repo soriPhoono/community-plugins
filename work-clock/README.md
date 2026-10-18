@@ -134,6 +134,5 @@ noctalia msg plugin soriphoono/work-clock:pomodoro all <event>
 This project is licensed under the MIT License.
 
 Additional assets:
-- JetBrains Mono font, which is licensed separately under the SIL Open Font License 1.1 (OFL-1.1). See `THIRD_PARTY_LICENCES/OFL.txt` for the full license text.
 - Alarm sound: `alarm.mp3` - Sourced from [Pixabay](https://pixabay.com/) (Royalty-free, [Pixabay Content License](https://pixabay.com/service/license-summary/))
 - Tick/Tock sounds: `tick1-9.wav/tock1-9.wav` - Sourced from [Pixabay](https://pixabay.com/sound-effects/film-special-effects-clock-ticking-down-376897/), manually cut into parts. (Royalty-free, [Pixabay Content License](https://pixabay.com/service/license-summary/))

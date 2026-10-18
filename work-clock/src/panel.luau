@@ -1,5 +1,3 @@
-local timeFontFamily = noctalia.loadFont("resources/JetBrainsMono-Regular.ttf")
-
 local function formatTime(seconds, total)
   local showingHours = total >= 3600 or seconds >= 3600
   local hours = math.floor(seconds / 3600)
@@ -110,7 +108,6 @@ local function render(state, sessionData)
                     text = formatTime(state.secondsLeft, stageTotalSeconds),
                     fontSize = 42,
                     fontWeight = "bold",
-                    fontFamily = timeFontFamily,
                     color = "primary",
                 }),
             }),
